@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% load extras %}
+
+<section class="text-gray-700 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap -m-4">
+      
+      {% for product in products %}
+      <div class="lg:w-1/4 md:w-1/2 p-4 w-full italic rounded border-2">
+        <span class="bg-gray-500 rounded"> <b class="p-2 text-black"> {{product.product_percent_off}} % off</b></span>
+        <a class="block relative h-48 rounded overflow-hidden" href="../product-view-page/{{product.bsno}}">
+          <img alt="ecommerce" class="object-cover object-center w-75 block" src="{{product.product_imgurl}}">
+        </a>
+        <div class="mt-4">
+          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{product.product_desc|truncatechars:150}}</h3>
+          <h2 class="text-gray-900 title-font text-lg font-medium">{{product.product_title}}</h2>
+          <span class="title-font font-medium text-2xl text-gray-900"><span>&#8377; <span class="title-font font-medium text-2xl text-gray-900" id="price">{{ product.product_price|multiply:product.product_percent_off}}  </span>
+            <span>  &nbsp </span> <del class="title-font font-medium text-xl text-gray-900"><span class="text-md"> &#8377;</span> {{product.product_price}}</del>
+          <div class="container mx-auto flex px-10 mt-4  items-center justify-center flex-col">
+            <a href="../product-view-page/{{product.bsno}}"  class=" text-white text-center bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">View product</a>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+
+<!-- pagination start here -->
+
+
+<section class="text-gray-700 body-font">
+  <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+    <div class="text-center lg:w-2/3 w-full">
+      <div class="flex justify-center">
+        {% if page_obj.has_previous %}
+
+        <a href="?page=1"
+          class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0 mx-1">&laquo;
+          first</a>
+        <a href="?page={{ page_obj.previous_page_number }}"
+          class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0 mx-1">previous</a>
+
+        {% endif %}
+
+        <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+
+        <a href="?page={{ page_obj.next_page_number }}"
+          class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0 mx-1">next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}"
+          class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0 mx-1">last
+          &raquo;</a>
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section> 
+
+<!-- pagination end -->
+
+
+
+{% endblock body %}
