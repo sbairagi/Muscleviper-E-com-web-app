@@ -25,6 +25,7 @@ function incressqty_to_cart(pid, pname, price, pimg){
                 
                 if (oldProduct.productQuentity==0){
                     deleteItemFromCart(oldProduct.productId);
+                    checkoutcart()
                 }
 
              
@@ -112,7 +113,6 @@ function updateCart(){
         $('#cartdetail').html('no product in your cart. <br> cart is empty !!');
         $('.cart-items').html(' 0 ');
         $('.cart-body').html('<h3>cart does not have any items </h3>');
-        $('.checkout-btn').addClass('disabled');
 
     }
     else{
@@ -135,15 +135,21 @@ function updateCart(){
         cart.map((item)=>{
             
             product+=`
-            <div class="lg:w-1/0 mt-2 md:w-1/2 p-4 w-full rounded border-2">
-        <a class="block relative h-48 rounded overflow-hidden" href="../product-view-page/${item.productId}">
-          <img alt="ecommerce" class="object-cover object-center w-100 block" src="${item.productImage}">
+            <div class=" rounded border-2">
+        <a class="block relative  rounded overflow-hidden" href="../product-view-page/${item.productId}">
+          <img alt="ecommerce" class="object-cover object-center w-75 block pl-12" src="${item.productImage}">
         </a>
-        <div class="mt-4">
+        <div class="mt-4 ml-8">
           <h6 class="text-gray-900 title-font  font-medium">${item.productName}</h6>
             <span class="title-font font-medium  text-gray-900" id="price">Price :- &#8377; ${item.productPrice}/-</span><br><h2 class="text-gray-900 title-font  font-medium">Quantity :- ${item.productQuentity}</h2>
-            <span class="title-font font-medium  text-gray-900" id="price"> Total Price &#8377; ${item.productPrice*item.productQuentity}/-</span>
+            <span class="title-font font-medium  text-gray-900" id="price"> Total Price &#8377; ${item.productPrice*item.productQuentity}/-</span><br>
             <button onclick="deleteItemFromCart(${item.productId})" class=" m-2 btn-xs text-white text-center bg-indigo-500 border-0 py-2  focus:outline-none hover:bg-indigo-600 rounded text-lg">Remove Item</button>
+            <div class="flex border-2 m-2 rounded">
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <button id="addtocart" onclick="add_to_cart(${item.productId},'${item.productName}',${item.productPrice},'${item.productImage}')"  class="flex btn-sm mr-4 ml-auto text-white bg-indigo-500 border-0 m-12 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">+</button>
+            <span class="mr-4 mt-16">${item.productQuentity} Qty</span>
+            <button  onclick="incressqty_to_cart(${item.productId},'${item.productName}',${item.productPrice},'${item.productImage}')"  class="m-12 flex btn-sm  mr-4 ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">-</button>
+          </div>
         </div>
       </div>
         
@@ -161,6 +167,9 @@ function updateCart(){
         `
         $('.cart-body').html(product)
         $('.cart-items').html(`${qty}`);
+
+
+        checkoutcart()
 
     }
 }
@@ -183,43 +192,63 @@ $(document).ready(function(){
 
 
 
-// $(document).ready(function () {
+function checkoutcart(){
 
 
-//     let qty = 0
-//     var cart = {qty : 0}
+let cartstring = localStorage.getItem('cart');
+    let cart = JSON.parse(cartstring);
+    if (cart==null || cart.length==0){
+        console.log('cart is empty');
+        $('.checkoutproducts').html('<b>no product in your cart. <br> cart is empty !!</b>');
 
-//     $('#addtocart').click(function () {
-//         cart[qty] +=1
-//         $("#addtocart").replaceWith(`<button id="plus" class="flex btn-sm m-1 ml-auto text-white bg-indigo-500 border-0 py-2 focus:outline-none hover:bg-indigo-600 rounded">+</button> <span id='qty' class='text-capitalize ml-4 mt-2 text-center'>${qty} qty</span> <button id="minus" class="flex btn-sm ml-auto text-white bg-indigo-500 border-0 py-2 m-1 focus:outline-none hover:bg-indigo-600 rounded">-</button>`);
+    }
+    else{
+        console.log(cart)
         
-//         $('#plus').click(function () {
-//             cart[qty] +=  1;
-//             document.getElementById('qty').innerText = `${qty} qty`
-//             console.log(cart.qty)
-            
-//         });
-
-
-//         $('#minus').click(function () {
-//             if (qty>=1) {
-//                 cart[qty] -=  1;
-//                 document.getElementById('qty').innerText = `${qty} qty`
-//                 console.log(cart.qty)
-                
-//             }
-            
-//             else {
-//                 console.log('qty is 0')
-//             }
-//         });
-
-
         
 
-//     });
+        let product = `
+                        <div class="row">  
+        
+        
+        
+        
+        `;
 
-    
 
-// });
+        let totalPrice = 0
+
+        cart.map((item)=>{
+            
+            product+=`
+            <div class="lg:w-1/4 md:w-1/2 rounded border-2 col-md-4">
+        <a class="block relative  rounded overflow-hidden" href="../product-view-page/${item.productId}">
+          <img alt="ecommerce" class=" object-cover object-center  block " src="${item.productImage}">
+        </a>
+        <div class="mt-4 p-8">
+          <h6 class="text-gray-900 title-font  font-medium">${item.productName}</h6>
+            <span class="title-font font-medium  text-gray-900" id="price">Price :- &#8377; ${item.productPrice}/-</span><br><h2 class="text-gray-900 title-font  font-medium">Quantity :- ${item.productQuentity}</h2>
+            <span class="title-font font-medium  text-gray-900" id="price"> Total Price &#8377; ${item.productPrice*item.productQuentity}/-</span><br>
+        </div>
+      </div>
+        
+            
+            `
+
+            totalPrice += item.productPrice * item.productQuentity;
+        });
+
+        product = product+`
+        </div> 
+        <div class="m-10"><b class="mb-24 text-md"> Your Cart Total Is : ${totalPrice}/- .<br> Enter Your Details Below & Place Your Order. Thanks For Using My Awesome Cart</b></div>
+        
+        `
+        $('.checkoutproducts').html(product)
+
+    }
+
+
+
+}
+
 

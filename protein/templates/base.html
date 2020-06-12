@@ -57,7 +57,11 @@
           <a class="nav-link" href="/contactus">Contactus</a>
         </li>
       </ul>
-
+      <form method="get" action="/search" class="inline-flex my-2 xs my-lg-0 mx-3">
+        <input name="query" class="form-control mr-sm-2" type="search" placeholder="Search Products"
+          aria-label="Search">
+        <button class="btn btn-outline-success  my-sm-0" type="submit">Search</button>
+      </form>
 
       
       {% if user.is_authenticated %}
@@ -85,11 +89,6 @@
     </button>
     {% endif %}
     </div>
-    <form method="get" action="/search" class="inline-flex my-2 xs my-lg-0 mx-3">
-        <input name="query" class="form-control mr-sm-2" type="search" placeholder="Search Products"
-          aria-label="Search">
-        <button class="btn btn-outline-success  my-sm-0" type="submit">Search</button>
-      </form>
   </nav>
 
   {% if messages %}
@@ -369,129 +368,10 @@
 
 
   {% load static %}
-<script src="{% static 'js/productview.js' %}"></script>
+<script src="{% static 'js/productview.js' %}"></script> 
 
   <script>
 
-
-
-
-
-
-
-  /*
-
-    function cartItems() {
-
-      var values = 0
-      keys = Object.keys(localStorage),
-        i = keys.length;
-
-      while (i--) {
-        values += JSON.parse(localStorage.getItem(keys[i]));
-      }
-      return values;
-    }
-
-     console.log(productsId())
-
-    document.getElementById('cart').innerText = `${cartItems()}`
-
-
-
-    let qty = 0
-
-    $('.flex').on('click', 'button#addtocart', function () {
-      qty += 1
-      document.getElementById('qty1').innerText = `${qty}`
-      $("#addtocart").replaceWith(`<button id="plus" class="flex btn-sm m-1 ml-auto text-white bg-indigo-500 border-0 py-2 focus:outline-none hover:bg-indigo-600 rounded">+</button> <a href="/checkout" class="flex btn-sm m-1 ml-auto text-white bg-indigo-500 border-0 py-2 focus:outline-none hover:bg-indigo-600 rounded" class='text-capitalize ml-4 mt-2 text-center'>Checkout</a> <button id="minus" class="flex btn-sm ml-auto text-white bg-indigo-500 border-0 py-2 m-1 focus:outline-none hover:bg-indigo-600 rounded">-</button>`);
-      updatecart(cart)
-      
-      // cartItems.push(cart)
-      // console.log(cartItems.indexOf(cart))
-      // console.log(cartItems)
-
-
-      $('#plus').click(function () {
-        qty += 1;
-        document.getElementById('qty1').innerText = `${qty}`
-        updatecart(cart)
-        // cartItems[cartItems.indexOf(cart)] = cart
-        // console.log(cartItems)
-      });
-
-
-      $('#minus').click(function () {
-        if (qty >= 1) {
-          qty -= 1;
-          document.getElementById('qty1').innerText = `${qty}`
-          updatecart(cart)
-          // cartItems[cartItems.indexOf(cart)] = cart
-          // console.log(cartItems)
-        }
-
-        else {
-          console.log('qty is 0')
-        }
-      });
-
-
-
-      function updatecart(cart) {
-        productId = document.getElementById('pid').innerText
-        
-        localStorage.setItem(productId, JSON.stringify(qty));
-        console.log(productsId())
-        // a = JSON.parse(Object.values(localStorage))
-        // console.log(a)
-        document.getElementById('cart').innerText = `${cartItems()}`
-
-
-
-        //console.log(JSON.parse(Object.values(localStorage)))
-      }
-
-
-
-
-      function cartItems() {
-
-        var values = 0
-        keys = Object.keys(localStorage),
-          i = keys.length;
-
-        while (i--) {
-          values += JSON.parse(localStorage.getItem(keys[i]));
-        }
-        return values;
-      }
-      // document.getElementById('cart').innerText = `${qty}`
-
-    });
-
-    function productsId() {
-
-        var values = {}
-          keys = Object.keys(localStorage),
-          i = keys.length;
-
-        while (i--) {
-          if (JSON.parse( localStorage.getItem(keys[i])) == 0){
-                console.log("product qty is zero")
-          }
-          // values.push( JSON.parse( localStorage.getItem(keys[i])) );
-          else{
-                values[ keys[i] ] = JSON.parse( localStorage.getItem(keys[i]));
-          }
-          
-        }
-        $('#allprod').val(`${JSON.stringify(values)}`)
-
-        return values;
-        
-      }
-
-*/
 
 
   </script>
