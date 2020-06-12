@@ -8,26 +8,26 @@
 <!-- image slider start -->
 
 <div id="carouselExampleInterval" class="carousel slide " data-ride="carousel">
-  <div class="carousel-inner">
+  <div class="carousel-inner mt-10 p-4">
     <div class="carousel-item active" data-interval="10000">
       <img src="https://buyceps.s3.ap-south-1.amazonaws.com/collection-backgrounds/stock-clearance-desktop.png"
-        class="d-block w-100" alt="...">
+        class="d-block w-100 mt-12 rounded" alt="...">
     </div>
     <div class="carousel-item" data-interval="2000">
       <img src="https://buyceps.s3.ap-south-1.amazonaws.com/collection-backgrounds/delivery-active-web.png"
-        class="d-block w-100" alt="...">
+        class="d-block w-100 mt-12 rounded" alt="...">
     </div>
     <div class="carousel-item">
       <img src="https://buyceps.s3.ap-south-1.amazonaws.com/collection-backgrounds/on-banner-desktop.png"
-        class="d-block w-100" alt="...">
+        class="d-block w-100 mt-12 rounded" alt="...">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
@@ -39,7 +39,7 @@
 
 
 <!-- product slider start -->
-<h1 class=" py-8 ml-8 text-xl">Tranding <br> <b class="ml-3 text-xl">Products</b> </h1>
+<h1 class=" py-8 ml-8 text-3xl">Tranding <br> <b class="ml-3 text-3xl">Products</b> </h1>
 
 <div class="container py-2 ">
 
@@ -85,18 +85,17 @@
   <hr></b>
 
 <!-- product brand start -->
-
 <section class=" body-font pt-4 ">
-  <h1 class=" ml-3 pl-24 text-xl">Tranding <br> <b class="ml-3 text-xl">Brands</b> </h1>
+  <h1 class=" ml-3 pl-24 text-3xl mb-12">Tranding <br> <b class="ml-3 text-3xl">Brands</b> </h1>
 
-  <div class="container px-24 pt-4 pb-24 mx-auto">
-    <div class="flex flex-wrap -m-4">
+  <div class="container px-24 pt-4 pb-24 mx-auto px-16">
+    <div class="flex flex-wrap -m-16">
     {% for product in brandimage %}
       <div class="lg:w-1/4 md:w-1/2 border-secondary border-2 w-full px-2 py-2 ">
         <a href="brand-wise-products/{{product.brand_name}}" class="p-4"><img
             src="{{product.brand_imgurl}}" class="px-4">
           <div class="brands-featured-list__logo-image "><img
-              src="{{product.brand_logourl}}" class="px-4"></div>
+              src="{{product.brand_logourl}}" class="px-24"></div>
         </a>
       </div>
         {% endfor %}
@@ -107,13 +106,13 @@
 <!-- product brand end -->
 
 <div class="container-flud my-8 text-center" id="page_baner_1">
-  <h4 class="ml-3 text-xl py-24">We've got everything <br><b class="ml-3 text-xl">for your goal</b></h4>
+  <h4 class="ml-3 text-4xl py-10">We've got everything <br><b class="ml-3 text-4xl">for your goal</b></h4>
 </div>
 
 <!-- product goal start -->
 
 <div class="container py-4 ">
-  <h4 class="ml-3 text-xl">TRENDING IN<br><b class="ml-3 text-xl">
+  <h4 class="ml-3 text-3xl">TRENDING IN<br><b class="ml-3 text-3xl">
     WEIGHTLOSS </b></h4>
 
 
@@ -160,7 +159,7 @@
 
 
 <div class="container py-4 ">
-  <h4 class="ml-3 text-xl">TRENDING IN<br><b class="ml-3 text-xl">DAILY VITALS</b></h4>
+  <h4 class="ml-3 text-3xl">TRENDING IN<br><b class="ml-3 text-3xl">DAILY VITALS</b></h4>
 
 
   <div id="DAILYVITALS" class="carousel slide" data-ride="carousel">
@@ -206,7 +205,7 @@
 
 
 <div class="container py-4 ">
-  <h4 class="ml-3 text-xl">TRENDING IN<br><b class="ml-3 text-xl">MASS GAINERS</b></h4>
+  <h4 class="ml-3 text-3xl">TRENDING IN<br><b class="ml-3 text-3xl">MASS GAINERS</b></h4>
 
 
   <div id="MASSGAINERS" class="carousel slide" data-ride="carousel">
@@ -259,7 +258,7 @@
 <!-- product by exclusive -->
 <div class="products-by-exclusive">
   <div class="products-by-exclusive__banner text-center" id="page_baner_2">
-    <h4 class="ml-3 text-xl py-24">Exclusively on<br><b>Buyceps</b></h4>
+    <h4 class="ml-3 text-4xl py-10">Exclusively on<br><b class="text-4xl">Buyceps</b></h4>
   </div>
 
   <div class="container ">

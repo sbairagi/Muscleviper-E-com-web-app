@@ -92,7 +92,6 @@ def checkout(request):
 def search(request):
     # allposts = Post.objects.all()
     query = request.GET.get('query')
-    print(query)
     if len(query)>78:
         allproducts=Brands.objects.none()
     if len(query)<1:

@@ -30,8 +30,8 @@ Suggestions: <br><br>
 
 {% for product in allproducts %}
 
-  <div class="lg:w-1/4 md:w-1/2 p-4 w-full rounded border-2">
-        <a class="block relative h-48 rounded overflow-hidden" href="../product-view-page/{{product.bsno}}">
+  <div class="lg:w-1/4 md:w-1/2 p-4 w-full mt-10 rounded border-2 ">
+        <a class="block relative h-48 rounded overflow-hidden w-75" href="../product-view-page/{{product.bsno}}">
           <img alt="ecommerce" class="object-cover object-center w-100 block" src="{{product.product_imgurl}}">
         </a>
         <div class="mt-4">
@@ -39,7 +39,7 @@ Suggestions: <br><br>
           <h2 class="text-gray-900 title-font text-lg font-medium">{{product.product_title}}</h2>
           <p class="mt-1">RS.{{product.product_price}}</p>
           <div class="container mx-auto flex px-10 mt-4  items-center justify-center flex-col">
-            <a href="../product-view-page/{{product.bsno}}"  class=" text-white text-center bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">View product</a>
+            <a href="../product-view-page/{{product.bsno}}"  class="text-white text-center bg-indigo-500 border-0 py-1 px-1 focus:outline-none hover:bg-indigo-600 rounded text-lg">View product</a>
           </div>
         </div>
       </div>
