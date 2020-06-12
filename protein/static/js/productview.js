@@ -113,6 +113,7 @@ function updateCart(){
         $('#cartdetail').html('no product in your cart. <br> cart is empty !!');
         $('.cart-items').html(' 0 ');
         $('.cart-body').html('<h3>cart does not have any items </h3>');
+        checkoutcart()
 
     }
     else{
@@ -183,11 +184,14 @@ function deleteItemFromCart(pid){
         localStorage.setItem('cart',JSON.stringify(newcart))
 
         updateCart()
+
+        checkoutcart()
 }
 
 
 $(document).ready(function(){
     updateCart()
+    checkoutcart()
 });
 
 
@@ -195,7 +199,7 @@ $(document).ready(function(){
 function checkoutcart(){
 
 
-let cartstring = localStorage.getItem('cart');
+    let cartstring = localStorage.getItem('cart');
     let cart = JSON.parse(cartstring);
     if (cart==null || cart.length==0){
         console.log('cart is empty');
@@ -244,6 +248,8 @@ let cartstring = localStorage.getItem('cart');
         
         `
         $('.checkoutproducts').html(product)
+        $('#itemsJson').val(cart)
+        $('#amount').val(totalPrice)
 
     }
 

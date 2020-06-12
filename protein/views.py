@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+import json
 
 
 
@@ -86,6 +87,19 @@ def contactus(request):
 
 
 def checkout(request):
+    if request.method=='POST':
+        itemsJson = request.POST.get("itemsJson")
+        amount = request.POST.get("amount")
+        name = request.POST.get("name")
+        address1 = request.POST.get("address1")
+        email = request.POST.get("email")
+        address2 = request.POST.get("address2", "default")
+        city = request.POST.get("city")
+        state = request.POST.get("state")
+        zip_code = request.POST.get("zip_code")
+        phone = request.POST.get("phone")
+        # products = json.loads(itemsJson)
+        # print( products, amount)
     return render(request,"checkout.html")
     
 

@@ -74,3 +74,12 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.email
+
+        
+class Contact(models.Model):
+    csno = models.AutoField(primary_key=True)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return self.email
