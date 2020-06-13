@@ -1,5 +1,5 @@
 from django.shortcuts import render , HttpResponse,redirect
-from .models import Brands,Brandimage,Contact
+from .models import Brands,Brandimage,Contact,Order
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -87,19 +87,26 @@ def contactus(request):
 
 
 def checkout(request):
+    # thank = 'ThankYou For Ordering. your order sent successfully'
     if request.method=='POST':
         itemsJson = request.POST.get("itemsJson")
         amount = request.POST.get("amount")
         name = request.POST.get("name")
         address1 = request.POST.get("address1")
+        address2 = request.POST.get("address2", "Dont Have")
         email = request.POST.get("email")
-        address2 = request.POST.get("address2", "default")
         city = request.POST.get("city")
         state = request.POST.get("state")
         zip_code = request.POST.get("zip_code")
         phone = request.POST.get("phone")
-        # products = json.loads(itemsJson)
-        # print( products, amount)
+        orderdetail = Order(itemsJson=itemsJson,amount=amount,name=name,address1=address1,address2=address2,email=email,city=city,state=state,zip_code=zip_code,phone=phone)
+        orderdetail.save()
+        messages.success(request, "your order has been placed successfully")
+        params = {
+            'thank' : 'ThankYou For Ordering. your order has been placed successfully'
+        }
+        return render(request,"checkout.html",params)
+    
     return render(request,"checkout.html")
     
 

@@ -93,10 +93,10 @@
 
   {% if messages %}
 
-  <div class="inline-flex items-center bg-gray-200">
+  <div class="inline-flex items-center bg-gray-200 container-fluid">
 
     {% for message in messages  %}
-    <div class="alert alert-{{ message.tags }} mb-0 alert-dismissible fade show" role="alert">
+    <div class="alert alert-{{ message.tags }} mt-12 mb-0 alert-dismissible fade show" role="alert">
       <strong>Message : </strong> {{ message }}
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -597,7 +597,7 @@ function checkoutcart(){
 
 
         let totalPrice = 0
-        let prodlist = ''
+        let prodlist = " "
 
         cart.map((item)=>{
             
@@ -617,7 +617,7 @@ function checkoutcart(){
             `
 
             totalPrice += item.productPrice * item.productQuentity;
-            prodlist +=  item.productName + ' , ' + item.productPrice + ' , ' + item.productQuentity + ' , ' ;
+            prodlist += '   product name :- ' + item.productName + '   product price :- ' + item.productPrice + '   product quantity :- ' + item.productQuentity + '   ' ;
         });
 
         product = product+`
@@ -626,9 +626,9 @@ function checkoutcart(){
         
         `
         $('.checkoutproducts').html(product)
-        // console.log(prodlist )
-        // $('#itemsJson').val(prodlist)
-        // $('#amount').val(totalPrice)
+        console.log(prodlist )
+        $('#itemsJson').val(prodlist)
+        $('#amount').val(totalPrice)
 
     }
 

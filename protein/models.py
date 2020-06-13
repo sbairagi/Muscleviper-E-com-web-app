@@ -75,11 +75,19 @@ class Contact(models.Model):
     def __str__(self):
         return self.email
 
-        
-class Contact(models.Model):
-    csno = models.AutoField(primary_key=True)
+
+class Order(models.Model):
+    itemsJson = models.TextField()
+    amount = models.IntegerField()
+    name = models.CharField(max_length=50)
+    address1 = models.CharField(max_length=255)
+    address2 = models.CharField(max_length=255)
     email = models.EmailField()
-    message = models.TextField()
+    city = models.CharField(max_length=25)
+    state = models.CharField(max_length=30)
+    zip_code = models.IntegerField()
+    phone = models.IntegerField()
 
     def __str__(self):
-        return self.email
+        return self.name + ' ' + self.email
+

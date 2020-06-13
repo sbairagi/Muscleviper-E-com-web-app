@@ -6,16 +6,30 @@
     <div class=" my-4">
         <b class="mb-24 text-xl">step 1 - My Awesome Cart Express Checkout - Review your cart items </b>
         <div class="my-4">
+
+            {% if thank %}
+              <div style="border-radius: 20px;" class='p-24 border-2 rounded bg-blue-800'>
+            <b class="mb-24 text-2xl">{{thank}}</b>
+            <script>localStorage.clear()</script>
+            </div>
+            {% else %}
+
             <div class="checkoutproducts">
+
+            
             
             </div>
+
+            {% endif %}
+
+            
         </div>
     </div>
     <div class="col my-4">
         <b class="mb-24 text-xl">step 2 - Enter Address & Other Details </b>
             <form method="post" action="/checkout/">{% csrf_token %}
-                <input required type="hidden" name="itemsJson" id="itemsJson">
-                <input required type="hidden" name="amount" id="amount">
+                <textarea required hidden name="itemsJson" id="itemsJson"></textarea>
+                <input required hidden name="amount" id="amount"> 
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="name">Name</label>
